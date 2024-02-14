@@ -77,22 +77,34 @@ class Classifier:
         fourth = tuple(data[16:24])
         fifth = data[24]
         
-        first_check = second_check = third_check = fourth_check = fifth_check = True
+        check_array = [True, True, True, True, True]
         
         if first not in self.walls:
-            first_check = False
+            check_array[0] = False
         if second not in self.food:
-            second_check = False
+            check_array[1] = False
         if third not in self.p1:
-            third_check = False
+            check_array[2] = False
         if fourth not in self.p2:
-            fourth_check = False
+            check_array[3] = False
         if fifth not in self.infront:
-            fifth_check = False
+            check_array[4] = False
             
-        #first_prob = self.moves_prob[0] * 
+        highest = 0
+        index = -1
+        
+        # print(self.food)
+        
+        for i in range (0, 3):
+            prob = self.moves_prob.get(i)
+            if check_array[0] is not False:
+                
+                    
+                
             
-        print(first_check, second_check, third_check, fourth_check, fifth_check)
+                
+            
+        # print(first_check, second_check, third_check, fourth_check, fifth_check)
         
         
 
