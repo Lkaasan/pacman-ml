@@ -90,7 +90,7 @@ class Classifier:
         if fifth not in self.infront:
             fifth_check = False
             
-        first_prob = self.moves_prob[0] * 
+        #first_prob = self.moves_prob[0] * 
             
         print(first_check, second_check, third_check, fourth_check, fifth_check)
         
