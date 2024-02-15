@@ -71,7 +71,6 @@ class Classifier:
             
 
     def predict(self, data, legal=None): 
-        print(data)
         first = tuple(data[0:4])
         second = tuple(data[4:8])
         third = tuple(data[8:16])
@@ -81,7 +80,7 @@ class Classifier:
         highest = 0
         index = -1
         
-        for i in range (0, 3):
+        for i in range (0, 4):
             prob = self.moves_prob.get(i)
             if first in self.walls:
                 value = self.walls[first][i]
@@ -113,9 +112,10 @@ class Classifier:
                 for x in self.infront:
                     total += self.infront.get(x)[i]
                 prob = prob * (value / total)
-
+            print(i, prob)
             if prob > highest:
                 highest = prob
                 index = i
         print(index)
+        print("----------------------")
         return index
