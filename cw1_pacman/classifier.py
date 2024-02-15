@@ -44,23 +44,23 @@ class Classifier:
             fifth = d[24]
             
             if first not in self.walls:
-                self.walls[first] = [0, 0, 0, 0]
+                self.walls[first] = [1, 1, 1, 1]
             self.walls[first][target[counter]] += 1
                     
             if second not in self.food:
-                self.food[second] = [0, 0, 0, 0]
+                self.food[second] = [1, 1, 1, 1]
             self.food[second][target[counter]] += 1
                 
             if third not in self.p1:
-                self.p1[third] = [0, 0, 0, 0]
+                self.p1[third] = [1, 1, 1, 1]
             self.p1[third][target[counter]] += 1
                     
             if fourth not in self.p2:
-                self.p2[fourth] = [0, 0, 0, 0]
+                self.p2[fourth] = [1, 1, 1, 1]
             self.p2[fourth][target[counter]] += 1    
                 
             if fifth not in self.infront:
-                self.infront[fifth] = [0, 0, 0, 0]
+                self.infront[fifth] = [1, 1, 1, 1]
             self.infront[fifth][target[counter]] += 1
                 
             counter += 1
@@ -93,18 +93,41 @@ class Classifier:
         highest = 0
         index = -1
         
-        # print(self.food)
-        
         for i in range (0, 3):
             prob = self.moves_prob.get(i)
             if check_array[0] is not False:
-                
-                    
-                
-            
-                
-            
-        # print(first_check, second_check, third_check, fourth_check, fifth_check)
-        
-        
+                value = self.walls[first][i]
+                total = 0
+                for x in self.walls:
+                    total += self.walls.get(x)[i]
+            prob = prob * (value / total)
+            if check_array[1] is not False:
+                value = self.food[second][i]
+                total = 0
+                for x in self.food:
+                    total += self.food.get(x)[i]
+            prob = prob * (value / total)
+            if check_array[2] is not False:
+                value = self.p1[third][i]
+                total = 0
+                for x in self.p1:
+                    total += self.p1.get(x)[i]
+            prob = prob * (value / total)
+            if check_array[3] is not False:
+                value = self.p2[fourth][i]
+                total = 0
+                for x in self.p2:
+                    total += self.p2.get(x)[i]
+            prob = prob * (value / total)
+            if check_array[4] is not False:
+                value = self.infront[fifth][i]
+                total = 0
+                for x in self.infront:
+                    total += self.infront.get(x)[i]
+            prob = prob * (value / total)
 
+            if prob > highest:
+                highest = prob
+                index = i
+        print(index)
+        return index
