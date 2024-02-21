@@ -40,7 +40,6 @@ class Classifier:
         # Creates a decision tree classifier
         self.clf = DecisionTreeClassifier()
         
-
     # Function that resets self when pacman dies
     def reset(self):
         self = None
