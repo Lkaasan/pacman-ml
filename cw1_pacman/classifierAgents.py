@@ -61,7 +61,7 @@ class ClassifierAgent(Agent):
     # Here we use it to load the training data.
     def registerInitialState(self, state):
 
-        self.data, self.target = loadData('moves.txt')
+        self.data, self.target = loadData('good-moves.txt')
         
         # data and target are both arrays of arbitrary length.
         #
